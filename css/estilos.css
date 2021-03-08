@@ -1,0 +1,1092 @@
+
+/*Especificaciones generales de la página. Tipo de letra, estilos de letra, formateo del grid general, etc*/
+
+*{
+    font-family: 'Playfair Display', serif;    
+    z-index:0;
+}
+
+*::first-letter{
+    font-size:1.5em;
+}
+
+body{
+    display:grid;
+    grid-template-areas:
+    'h h h h'
+    'h h h h'
+    'm m m m'
+    'm m m m'
+    'm m m m'
+    'f f f f';
+    border:0px;
+    margin:0px;         
+}
+
+header{
+    grid-area: h;    
+}
+
+main{
+    grid-area:m;    
+}
+
+.sombratenue{
+    box-shadow: 0 0 3px 3px rgba(22, 22, 22, 0.473);
+}
+
+.mayuscula{
+    font-size:1.5em;
+}
+
+.cita{
+    font-style: italic;
+}
+
+h1{
+    width: 100%;
+    color:#4782B4;
+    margin-top:100px;
+    margin-bottom:50px;
+}
+
+.azul{
+    color:#4782B4;
+}
+
+.gris{
+    color:rgba(143, 142, 142, 0.842);
+    font-size:0.8em;
+}
+
+.textocentrado{
+    text-align:center;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*Las siguientes instrucciones pertenecen al cupón lateral y a los cambios que sufre cuando se interactua con él*/
+
+
+#cupon{
+    z-index: 10;    
+    right:0;
+    top:50px;
+    width:35px;
+    height: 130px;
+    background-image: linear-gradient(#ff633c,#ffc198,#ff633c);   
+    position:fixed;  
+    border-top-left-radius: 25%;   
+    border-bottom-left-radius: 40%;
+    transition: width 0.5s, height 0.5s, border-top-left-radius 0.5s, border-bottom-left-radius 0.5s, opacity 0.5s;  
+}
+
+#cupon:active{
+    width:200px;
+    height: 130px;
+}
+
+#cuponOculto{
+    z-index: 11;    
+    right:0;
+    top:50px;
+    width:200px;
+    height: 130px;
+    background-image:url(../img/cuponDescuento.jpg);   
+    position:fixed;  
+    border-top-left-radius: 15%;   
+    border-bottom-left-radius: 35%;
+    background-position: center center;
+    background-repeat: no-repeat; 
+    background-size: 200px; 
+}
+
+#cuponOculto{    
+    display: none;
+}
+
+#cuponOculto:target{    
+    display: block;
+}
+
+#cupon:target{
+    display: block;
+}
+
+#cupon:hover{
+    width:45px;
+    border-top-left-radius: 25%;   
+    border-bottom-left-radius: 40%;
+    opacity: 0.5;
+}    
+
+#cupon:hover::before{
+    width:100px;
+    height: 60px;
+    background-color: black;  
+    color:white;  
+    content:'Aquí tu descuento!';    
+    bottom:30%;    
+    left: -140px;
+    border-radius: 10px 10px 10px 10px;
+    position:absolute;     
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#cupon:hover::after{
+    width:10px;
+    height: 10px;
+    background-color: black;        
+    content:'';  
+    transform: rotate(45deg);  
+    bottom:50%;    
+    left: -45px;
+    position:absolute; 
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*Las siguientes lineas decriben el footer y como debe visualizarse en la web*/
+
+footer{    
+    grid-area: f;
+    position:relative;
+}
+
+footer>div{
+    background-color:#2E2E2E;
+    display:grid;
+    grid-template-columns:33.33% 33.33% 33.33%;    
+    grid-template-rows:80% 20%;
+    color:white;
+    text-align: center;
+    width: 1900px;
+    top:0;
+    left:0;
+    position:absolute;
+}
+
+footer>div>div{
+    height:400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    padding-left:12%;   
+    padding-right:12%;
+}
+
+.sinmargen{
+    margin-top:0;
+    margin-bottom: 0;
+    color:#FA9C30;
+    padding-bottom:0px;
+    margin:0px;
+    font-size:1.2em;
+}
+
+.margensupcero{
+    padding-bottom:0px;
+    margin-top:0px;
+}
+
+#rojo{
+    color: #FE0000;
+}
+
+.lineablanca{
+    position:relative;
+}
+
+.lineablanca::after{
+    position:absolute;
+    content:'';
+    width:2px;
+    height:200px;
+    bottom:110px;    
+    left:100%;
+    background-color: white;
+}
+
+
+#cursofooter{
+    grid-column:1;
+    grid-row:1;      
+}
+
+#reservafooter{
+    grid-column:2;
+    grid-row:1;
+}
+
+#pedidofooter{
+    grid-column:3;
+    grid-row:1;
+    
+}
+
+#copyrightfooter{
+    grid-column:1/4;
+    grid-row:2;
+    padding-top:1%;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*A partir de aquí defino el nav y sus características. Además, he colocado la imagen de Michelín y la imagen del sello Covid-Free como After y Before del nav,
+por lo que los defino y especifico también en esta zona*/
+
+nav>ul>li{
+    list-style: none;
+    display:inline;
+   
+    margin-left:50px;
+    margin-right:50px;        
+}
+
+nav>ul>li>a{
+    text-decoration: none;
+    transition: font-size 0.5s;
+    color:black;
+}
+
+nav>ul>li>a:hover{
+    text-decoration: underline;
+    font-size:1.3em;
+}
+
+nav{
+    text-align: center;    
+    background-color: grey; /*en caso de no soportar el gradiente*/
+    background-image: linear-gradient(160deg,#6C3122,#FEF5DC,#6C3122);      
+    position:relative;
+    height:60px;
+    display:flex;  
+    align-items: center;  
+    justify-content: space-evenly;
+    z-index:1000;
+}
+
+nav::before{
+    display:block;
+    content:'';
+    width:200px;
+    height:200px;
+    bottom:35px;    
+    left:0px;
+    position:absolute;   
+    background-image: url(../img/michelinStars.png);  
+    background-size: 200px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+nav::after{    
+    display:block;
+    content:'';
+    width:150px;
+    height:150px;
+    bottom:80px;    
+    right: 50px;
+    position:absolute;   
+    background-image: url(../img/selloCovidfree.jpg);  
+    background-size: 150px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius:50%;
+}
+
+#redesSociales{
+    display:flex;
+    width:50%;
+    margin-left:40px;
+    flex-direction:row;    
+}
+
+#twitter{
+    color:#02ACEE;
+    font-size:20px;
+}
+
+#facebook{
+    color:#3B5999;
+    font-size:20px;
+}
+
+#pinterest{
+    color:#C82228;
+    font-size:20px;
+}
+
+#instagram{
+    color:#8A39B9;
+    font-size:20px;
+}
+
+#google{
+    color:#D34837;
+    font-size:20px;
+}
+
+#redesSociales>a{
+    margin-right:10px;
+}
+
+#bajonav{
+    display:flex;
+    flex-direction: row;
+}
+
+#telefono{
+    text-align:right;
+    color:#FA6C4C;
+    width:50%;
+    margin-right:40px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*Este trozo corresponde a la cabecera, la imagen, su posición y sus cambios cuando se pasa el ratón por encima*/
+
+#imagenescabecera{    
+    height:500px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+#imagensushi{    
+    width: 550px;
+    height: 300px;
+    background-image: url(../img/logoSushiito.png);
+    background-position: center center;
+    background-repeat: no-repeat;    
+    background-size: 400px;  
+    transition: transform 1s, opacity 1s, background-size 1s;
+    z-index:100;
+}
+
+#imagensushi:hover{         
+    transform: rotate(-15deg);
+    opacity:0.5;
+    background-size:480px;
+}
+
+header>div>p>a>i{
+    transition: opacity 0.5s;
+}
+
+header>div>p>a>i:hover{
+    opacity:0.4;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*CSS correspondiente a la página INDEX*/
+
+#imagenfondo{
+    background-image:url(../img/fr1_nigirisushi.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:200px;
+    box-shadow: inset 0 0 10px 5px black;
+}
+
+.citaindice{
+    position:relative;
+    margin-top:100px;
+    margin-left:10%;       
+    padding-left: 50px;
+    padding-right: 10%;    
+}
+
+.citaindicecompleto{
+    position:relative;
+    margin-top:100px;
+    margin-left:5%;
+    margin-right: 5%;    
+    padding-left: 50px;
+    padding-right: 200px;   
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+}
+
+.citaindice::before{
+    position:absolute;
+    content:'';
+    width:3px;
+    height:130%;
+    bottom:-20px;    
+    left:0;
+    background-color: #4782B4;
+}
+
+.citaindicecompleto::after{
+    position:absolute;
+    content:'';
+    width:33%;
+    height:5px;
+    bottom:0;    
+    left:33%;
+    background-color: black;
+}
+
+.izquierda{
+    text-align: right;
+}
+
+#reparto{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    margin-bottom:100px;
+    justify-content: space-around;
+}
+
+#textoreparto{
+    font-size:0.9em;
+    width: 800px;
+    text-align: justify;    
+    padding-left:10%;
+    display:flex;
+    flex-direction: column;   
+}
+
+#fotoreparto{
+    background-image:url(../img/delivery.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 350px;
+    height: 250px;   
+    margin-right: 10%;
+    padding-top: 10px;
+}
+
+/*Dentro de la página index tenemos las sugerencias. Para ello he utilizado un flex-box y he organizado las imágenes gracias al mismo*/
+
+#sugerencias{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom:5%;
+    flex-wrap: wrap;
+}
+
+#sugerencias>a{
+    margin:15px;
+    height:450px;
+    box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.281);
+    width:180px;
+    border-radius: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    text-align: center;
+    padding-left:15px;
+    padding-right: 15px;
+    transition: opacity 0.5s;
+    text-decoration: none;
+    color:black;
+    transition: width 0.5s, opacity 0.5s;
+}
+
+#sugerencias>a:hover{
+    opacity:0.5;
+}
+
+#sugerencias>a>div{   
+    margin-top:15px;     
+    height:380px;
+    border: 2px solid rgba(128, 128, 128, 0.281);
+    width:180px;
+    border-radius: 10px; 
+    transition: width 0.5s;
+}
+
+#superbento{
+    background-image:url(../img/superBento.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    
+}
+
+#besodragon{
+    background-image:url(../img/besoDragon.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;    
+}
+
+#bentofantasia{
+    background-image:url(../img/bentoFantasia.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;   
+}
+
+#gambasmoriwase{
+    background-image:url(../img/gambasMoriwase.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;    
+}
+
+#minibento{
+    background-image:url(../img/miniBento.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;    
+}       
+
+#atunpicante{
+    background-image:url(../img/atunPicante.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;    
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*A partir de aquí se encuentra el CSS correspondiente a la página EQUIPO*/
+/*Primero defino la galería superior y las interacciones que se pueden hacer con las fotografías*/
+
+#galeriafotos{
+    display:grid;
+    grid-gap: 10px;
+    grid-template-areas: 
+    'u u t t c'
+    'd d t t i';
+    height: 60vh;
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom: 100px;
+    
+}
+
+#galeriafotos>div{
+    border-radius: 10px; 
+    box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.281);
+}
+
+#imagenuno{
+    z-index:10;
+    grid-area: u;
+    background-image:url(../img/andrewNishimura.jpg);
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    background-size:610px;
+    -webkit-filter: sepia(100%);
+    transition: transform 0.4s;
+}
+
+#imagenuno:hover{
+    transform: rotate(180deg);
+}
+
+#imagendos{
+    grid-area: d;
+    background-image:url(../img/joeNishimura.jpg);
+    background-position: center 0%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    transition: transform 0.4s;
+}
+
+#imagendos:hover{
+    transform: rotateX(180deg);
+}
+
+#imagentres{
+    grid-area: t;
+    background-image:url(../img/nakaneNishimura.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    filter: blur(3px);    
+    transition: -webkit-filter 0.5s, transform 0.5s;
+}
+
+#imagentres:hover{    
+    filter: none;
+    transform: scale(0.7) rotate(30deg);
+}    
+    
+
+#imagencuatro{
+    grid-area: c;
+    background-image:url(../img/hichitoNishimura.jpg);
+    background-position: 80% center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: transform 0.4s;
+}
+
+#imagencuatro:hover{
+    transform: rotateY(180deg);
+}
+
+#imagencinco{
+    grid-area: i;
+    background-image:url(../img/fredNishimura.jpg);
+    background-position: 80% center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    filter: sepia(100%);
+    transition: transform 0.4s;
+}
+
+#imagencinco:hover{
+    transform: skew(30deg);
+}
+
+/*Después de las imágenes superiores, defino los textos y las imágenes referentes al apartado de las citas,
+así como las animaciones al pasar el ratón por encima*/
+
+#citasyfotos{
+    display:grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-gap: 2px;
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom: 50px;
+}
+
+
+.circulo{
+    box-shadow: inset 0 0 15px 0px black;
+    border-radius:50%;
+    height: 100px;
+    width: 100px;
+    margin-right: 50px;   
+    transition: width 0.5s, height 0.5s;
+}
+
+.circulo:hover{
+    animation: movimientoCirculos 0.4s infinite ease-out; 
+}
+
+
+@keyframes movimientoCirculos{
+    from{margin-top: 0px}
+    50%{margin-top: 10px}
+    60%{margin-top: 8px}
+    75%{margin-top: 5px}
+    to{margin-top: 0px}    
+}
+
+#fotouno{
+    grid-column:1;
+    grid-row:1;
+    background-image:url(../img/andrewNishimura.jpg);
+    background-position: 70% 20%;
+    background-repeat: no-repeat;
+    background-size:300px;    
+}
+
+#textouno{
+    grid-column:2/11;
+    grid-row:1;   
+    margin-left:50px;  
+    
+}
+
+.lineaA,.lineaB{
+    padding-left:5%;
+    padding-right: 10%;
+    position:relative;
+}   
+
+
+.lineaB::before{
+    position:absolute;
+    content:'';
+    width:3px;
+    height:130%;
+    bottom:-20px;    
+    left:0px;
+    background-color: #4782B4;
+}
+
+.lineaA::before{
+    position:absolute;
+    content:'';
+    width:3px;
+    height:130%;
+    bottom:-20%;    
+    left:100%;
+    background-color: #4782B4;
+}
+    
+#textodos{
+    grid-column:1/10;
+    grid-row:2;
+    margin-right:50px;
+}
+
+#fotodos{
+    grid-column:10;
+    grid-row:2;
+    background-image:url(../img/hichitoNishimura.jpg);
+    background-position: 82% 10%;
+    background-repeat: no-repeat;
+    background-size:330px;
+    margin-left:50px;
+    margin-right:50px; 
+}
+
+#fototres{
+    grid-column:1;
+    grid-row:3;
+    background-image:url(../img/fredNishimura.jpg);
+    background-position: 80% 15%;
+    background-repeat: no-repeat;
+    background-size:350px;
+    margin-right:50px;    
+}
+
+#textotres{
+    grid-column:2/11;
+    grid-row:3;
+    margin-left:50px;
+}
+
+#textocuatro{
+    grid-column:1/10;
+    grid-row:4;
+    margin-right:50px;
+}
+
+#fotocuatro{
+    grid-column:10;
+    grid-row:4;
+    background-image:url(../img/nakaneNishimura.jpg);
+    background-position: 60% 15%;
+    background-repeat: no-repeat;
+    background-size:200px;
+    margin-left:50px;
+    margin-right:50px; 
+}
+
+#fotocinco{
+    grid-column:1;
+    grid-row:5;
+    background-image:url(../img/joeNishimura.jpg);
+    background-position: 40% 20%;
+    background-repeat: no-repeat;
+    background-size:230px;
+}
+
+#textocinco{
+    grid-column:2/11;
+    grid-row:5;
+    margin-left:50px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*A partir de esta linea comienza el CSS relativo a la página CARTA*/
+/*He decidido utilizar un grid para la carta en vez de flex-box, puesto que creía que este método de organización sería más adaptativo*/
+
+#carta{
+    display:grid;
+    grid-template-areas: 
+    'd1 d1 f1 f1'
+    'd2 d2 f2 f2'
+    'd2 d2 f2 f2'
+    'd3 d3 f3 f3'
+    'd3 d3 f3 f3'
+    'd4 d4 f4 f4'
+    'd4 d4 f4 f4';
+    height: 50vh;  
+    margin-bottom:100px;  
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-bottom: 100px;        
+    background-color:rgb(255,255,255); 
+    position:relative; 
+    overflow: hidden;  
+    height: 1200px;   
+}
+
+#carta::after {
+    content: "";
+    background-image:url(../img/sushitoRestaurant.jpg);
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-position: center center;
+    background-size: 1900px;    
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+  
+
+#carta>div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    text-align:center;
+}
+
+#carta>div>ul>li{
+    list-style: none; 
+    margin-bottom:50px;  
+    text-align: center;  
+}
+
+#carta>h2{
+    margin-top:15%;
+    margin-bottom:5%;    
+}
+
+h3{    
+    color: #D3185E;
+}
+
+#diariouno{
+    grid-area:d1;
+}
+
+#festivosuno{
+    grid-area:f1;
+}
+
+#diariodos{
+    grid-area:d2;
+}
+
+#festivosdos{
+    grid-area:f2;
+}
+
+#diariotres{
+    grid-area:d3;
+}
+
+#festivostres{
+    grid-area:f3;
+}
+
+#diariocuatro{
+    grid-area:d4;
+}
+
+#festivoscuatro{
+    grid-area:f4;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*CSS relativo a la página LOCALIZACIÓN*/
+
+#imagenlocalizacion{
+    background-image:url(../img/fr2_sushitable.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:200px;
+    box-shadow: inset 0 0 10px 5px black;
+    margin-bottom: 5%;   
+}
+
+#localizacionHorario{
+    display: flex;    
+    flex-direction: row;
+    margin-top:100px;
+    margin-bottom: 100px; 
+    align-items: center;   
+    justify-content: center;       
+}
+
+.negro{
+    color:black;
+    font-weight: bolder;
+}
+
+#mapa{
+    height: 600px;
+    width: 600px;
+    border: 2px solid black;
+    border-radius: 30px 50% 30px 50%;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+#horario{
+    height: 500px;
+    width: 700px;
+    border: 2px solid black;
+    border-radius: 30px 30px 30px 30px;
+    padding:50px;
+    padding-top:100px;
+    padding-bottom:10px;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+ul>li>ul>li{
+    list-style: none;    
+}
+
+.margensup{
+    margin-top:50px;  
+    position:relative;  
+}
+
+.margeninf{
+    margin-bottom:50px;
+}
+
+.margensup::before{
+    position:absolute;
+    content:'';
+    width:600px;
+    height:3px;
+    bottom:50px;    
+    left:50px;
+    background-color: black;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*Por último, esta sección final corresponde a la MEDIA QUERY, 
+donde se realizan todos los cambios especificados en el 
+enunciado cuando el tamaño del visor 
+está por debajo de los 800px*/
+
+@media only screen and (max-width: 800px) {
+    nav>ul>li{       
+        display:block;    
+        margin-top:20px;
+        margin-bottom: 20px;  
+        text-align: left;              
+    }
+
+    nav{   
+        height:300px;        
+        justify-content: left;
+    }  
+    
+    nav::before{      
+        bottom:275px;       
+    }
+    
+    nav::after{       
+        bottom:320px;         
+    }
+    #textoreparto{        
+        width: 100%;  
+        padding-left: 0%;                  
+    }
+
+    #fotoreparto{
+        margin:0;
+    }
+
+    #sugerencias>a{      
+        width:400px;        
+    }
+
+    #sugerencias>a>div{           
+        width:400px;           
+    }
+
+    footer{
+        display:none;
+    }
+
+    #textouno{
+        font-size:0.8em;          
+    }  
+    
+    #textodos{
+        font-size:0.8em;
+    }
+    
+    #fotodos{        
+        margin-left:0px;
+    }
+    
+    #textotres{
+        font-size:0.8em;
+    }
+    
+    #textocuatro{
+        font-size:0.8em;
+    }
+    
+    #fotocuatro{        
+        margin-left:0px;        
+    }  
+    
+    #textocinco{
+        font-size:0.8em;
+    }
+
+    .circulo{        
+        width: 90px;
+        height: 150px;     
+        
+    }
+
+    #carta{
+        grid-template-areas: 
+        'd1 d1' 
+        'd2 d2' 
+        'd2 d2' 
+        'd3 d3'
+        'd3 d3' 
+        'd4 d4'
+        'd4 d4'
+        'f1 f1'        
+        'f2 f2'
+        'f2 f2'
+        'f3 f3'
+        'f3 f3'
+        'f4 f4'
+        'f4 f4'      
+        ;
+
+        height: 2000px;
+        }   
+    
+    #carta>div>ul>li{         
+        margin-bottom:10px;           
+    }
+    
+    #carta>h2{
+        margin-top:1%;
+        margin-bottom:1%;    
+    }
+
+    #carta::after {        
+        background-size: cover;        
+    }
+
+    #imagenescabecera{      
+        justify-content: left;
+    } 
+
+    nav::after{
+        left:400px;
+    } 
+
+}
